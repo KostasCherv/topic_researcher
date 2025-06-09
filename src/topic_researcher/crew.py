@@ -2,10 +2,17 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
+from crewai_tools import (
+    SerperDevTool,
+    WebsiteSearchTool,
+)
 
 # If you want to run a snippet of code before or after the crew starts,
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
+
+search_tool = SerperDevTool()
+web_rag_tool = WebsiteSearchTool()
 
 
 @CrewBase
@@ -24,7 +31,9 @@ class TopicResearcher:
     @agent
     def researcher(self) -> Agent:
         return Agent(
-            config=self.agents_config["researcher"], verbose=True  # type: ignore[index]
+            config=self.agents_config["researcher"],
+            tools=[search_tool, web_rag_tool],
+            verbose=True,  # type: ignore[index]
         )
 
     @agent
@@ -54,14 +63,14 @@ class TopicResearcher:
     def reporting_task(self) -> Task:
         return Task(
             config=self.tasks_config["reporting_task"],  # type: ignore[index]
-            output_file="report.md",
+            output_file="output/report.md",
         )
 
     @task
     def email_summarizer_task(self) -> Task:
         return Task(
             config=self.tasks_config["email_summarizer_task"],  # type: ignore[index]
-            output_file="email_summary.md",
+            output_file="output/email_summary.md",
         )
 
     @crew
