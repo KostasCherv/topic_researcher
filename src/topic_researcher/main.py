@@ -5,7 +5,7 @@ from datetime import datetime
 import gradio as gr
 import os
 
-from topic_researcher.crew import TopicResearcher
+from src.topic_researcher.crew import TopicResearcher
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
