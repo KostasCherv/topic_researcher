@@ -18,6 +18,7 @@ Next, navigate to your project directory and install the dependencies:
 ```bash
 crewai install
 ```
+
 ### Customizing
 
 **Add your `OPENAI_API_KEY` into the `.env` file**
@@ -29,15 +30,36 @@ crewai install
 
 ## Running the Project
 
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
+### Web Interface
+The project now includes a Gradio web interface for interactive topic research. To launch it:
 
 ```bash
 $ crewai run
 ```
 
-This command initializes the topic_researcher Crew, assembling the agents and assigning them tasks as defined in your configuration.
+This will start a local web server where you can:
+- Enter any topic you want to research
+- Get both a detailed research report and a quick summary
+- View example topics for inspiration
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+### Command Line Usage
+You can also use the project through the command line with various options:
+
+```bash
+# Train the crew for a specific number of iterations
+$ crewai train <iterations> <filename>
+
+# Replay the crew execution from a specific task
+$ crewai replay <task_id>
+
+# Test the crew execution
+$ crewai test <iterations> <eval_llm>
+```
+
+## Output
+The project generates two types of outputs:
+- A comprehensive research report (`output/report.md`)
+- A concise email summary (`output/email_summary.md`)
 
 ## Understanding Your Crew
 
