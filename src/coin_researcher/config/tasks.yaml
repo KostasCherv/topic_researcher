@@ -1,0 +1,211 @@
+coin_overview_task:
+  description: >
+    Conduct comprehensive research about {coin} to create an executive summary.
+    Focus on the coin's history, founding story, core purpose, unique features, and value proposition.
+    Make sure to include key facts about when it was created, by whom, and what problem it solves.
+    Consider the current year {current_year} and how the project has evolved over time.
+  expected_output: >
+    A comprehensive executive summary covering:
+    - Brief history and founding story
+    - Core purpose and value proposition
+    - Key unique features and innovations
+    - Current status and market position
+    - What makes this coin different from others
+  agent: coin_overview_agent
+
+tokenomics_analysis_task:
+  description: >
+    Analyze the tokenomics of {coin} in detail.
+    Research and explain the token supply, distribution mechanisms, inflation/deflation model,
+    staking mechanisms (if any), governance structures, and economic incentives.
+    Include specific numbers and percentages where available.
+  expected_output: >
+    A detailed tokenomics breakdown including:
+    - Total supply and circulating supply
+    - Distribution and allocation details
+    - Inflation/deflation mechanisms
+    - Staking and yield opportunities
+    - Governance and voting mechanisms
+    - Economic incentives and token utility
+  agent: tokenomics_analyst
+
+sentiment_analysis_task:
+  description: >
+    Analyze market sentiment for {coin} by aggregating information from news sources,
+    social media platforms, forums, and community discussions.
+    Identify key positive and negative factors affecting sentiment.
+    Look for trends and patterns in community perception.
+  expected_output: >
+    A comprehensive sentiment analysis including:
+    - Overall market sentiment (positive/negative/neutral)
+    - Key positive factors and catalysts
+    - Key negative factors and concerns
+    - Community sentiment trends
+    - Notable social media discussions
+    - Recent news impact on sentiment
+  agent: sentiment_analyst
+
+onchain_data_analysis_task:
+  description: >
+    Analyze key on-chain metrics for {coin} to assess network health and adoption.
+    Research active addresses, transaction volume, network usage, and other relevant blockchain data.
+    Look for trends and patterns that indicate the project's health and growth.
+    Include specific metrics like transaction speed, fees, scalability, and security status.
+  expected_output: >
+    A detailed on-chain analysis including:
+    - Active addresses and user growth
+    - Transaction volume and frequency
+    - Network usage patterns
+    - Key metrics trends
+    - Adoption indicators
+    - Network health assessment
+    - Transaction speed and fees
+    - Scalability metrics
+    - Security status and recent audits
+    - Geographic distribution of users
+  agent: onchain_data_analyst
+
+ecosystem_mapping_task:
+  description: >
+    Map and analyze the ecosystem around {coin}.
+    Identify major dApps, DeFi protocols, partnerships, integrations, and key players in the ecosystem.
+    Explain how these components contribute to the overall value of the coin.
+  expected_output: >
+    A comprehensive ecosystem overview including:
+    - Major dApps and protocols
+    - Key partnerships and integrations
+    - DeFi ecosystem components
+    - Developer tools and infrastructure
+    - Community projects and initiatives
+    - Ecosystem value proposition
+  agent: ecosystem_mapper
+
+risk_controversy_analysis_task:
+  description: >
+    Research and document known risks, hacks, controversies, and regulatory issues related to {coin}.
+    Be thorough in identifying both historical incidents and current concerns.
+    Assess the severity and potential impact of each risk factor.
+  expected_output: >
+    A comprehensive risk assessment including:
+    - Historical hacks and security incidents
+    - Regulatory concerns and legal issues
+    - Technical risks and vulnerabilities
+    - Controversies and community disputes
+    - Market and economic risks
+    - Risk mitigation strategies (if any)
+  agent: risk_controversy_reporter
+
+recent_developments_task:
+  description: >
+    Track and summarize the latest developments for {coin}.
+    Research recent news, upgrades, roadmap items, and significant events.
+    Focus on developments from the past 6-12 months that are most relevant to understanding the project's current state.
+  expected_output: >
+    A summary of recent developments including:
+    - Latest news and announcements
+    - Recent upgrades and technical developments
+    - Roadmap progress and milestones
+    - Significant partnerships or integrations
+    - Community developments and governance decisions
+    - Impact assessment of recent changes
+  agent: recent_developments_curator
+
+market_data_analysis_task:
+  description: >
+    Research current market data for {coin} including price, market cap, trading volume, and performance metrics.
+    Analyze price trends, all-time highs, market positioning, and trading activity.
+    Include specific numbers and percentages for current market status.
+  expected_output: >
+    A comprehensive market data analysis including:
+    - Current price and price range
+    - Market cap and market ranking
+    - 24h trading volume and percentage changes
+    - All-time high price and date
+    - Price performance trends
+    - Market positioning vs competitors
+    - Trading activity patterns
+  agent: market_data_analyst
+
+coin_summary_task:
+  description: >
+    Create a comprehensive, actionable summary of {coin} by synthesizing all research findings from the specialized agents.
+    Focus on providing specific, data-driven insights that help users make informed decisions.
+    
+    CRITICAL REQUIREMENTS:
+    - Include specific metrics (exact numbers, percentages, dates) from all research areas
+    - Avoid generic phrases like "strong community" or "good technology" - provide concrete examples
+    - Highlight unique features with real examples and competitive advantages
+    - Include specific risks with historical incidents or current concerns
+    - Mention recent news with exact dates and measurable impact
+    - Provide actionable insights for different types of users (investors, developers, users)
+    - Use data from on-chain metrics, sentiment analysis, and ecosystem mapping
+    - Ensure all claims are supported by the research findings from other agents
+  expected_output: >
+    A detailed, actionable summary with the following enhanced structure:
+    
+    # {coin} Comprehensive Analysis
+    
+    ## What is it?
+    [3-4 sentences with specific details about founding, technology, and unique value proposition. Include founding year, key founders/team, and what makes it different from competitors]
+    
+    ## Key Metrics & Performance
+    - **Total Supply**: [Exact number with distribution details]
+    - **Circulating Supply**: [Current circulating amount and percentage]
+    - **Current Price**: [Exact price range with recent performance]
+    - **Market Cap**: [Current market cap and ranking]
+    - **24h Volume**: [Trading volume with percentage change]
+    - **All-Time High**: [ATH price and date]
+    - **Active Addresses**: [Daily/monthly active users with growth trends]
+    - **Transaction Volume**: [Daily transaction count and value]
+    
+    ## Market Sentiment & Community
+    [🟢 Bullish / 🟡 Neutral / 🔴 Bearish] - [Specific reasons with data points]
+    - **Positive Catalysts**: [List 2-3 specific positive factors with examples]
+    - **Community Growth**: [User growth metrics, social media engagement]
+    - **Institutional Interest**: [Specific institutional adoption or investment examples]
+    
+    ## Core Strengths & Competitive Advantages
+    1. **[Specific Strength]**: [Detailed explanation with real examples and metrics]
+    2. **[Specific Strength]**: [Detailed explanation with real examples and metrics]
+    3. **[Specific Strength]**: [Detailed explanation with real examples and metrics]
+    4. **[Specific Strength]**: [Detailed explanation with real examples and metrics]
+    
+    ## Ecosystem & Partnerships
+    - **Major dApps**: [List top 3-5 applications with user metrics]
+    - **DeFi Protocols**: [Key DeFi platforms and TVL if applicable]
+    - **Strategic Partnerships**: [Specific partnerships with impact details]
+    - **Developer Activity**: [GitHub activity, developer tools, ecosystem growth]
+    
+    ## Risk Assessment & Concerns
+    1. **[Specific Risk]**: [Detailed explanation with historical examples or current concerns]
+    2. **[Specific Risk]**: [Detailed explanation with historical examples or current concerns]
+    3. **[Specific Risk]**: [Detailed explanation with historical examples or current concerns]
+    4. **[Specific Risk]**: [Detailed explanation with historical examples or current concerns]
+    
+    ## Recent Developments & Roadmap
+    - **[Specific Development]**: [Detailed explanation with dates and impact]
+    - **[Specific Development]**: [Detailed explanation with dates and impact]
+    - **[Specific Development]**: [Detailed explanation with dates and impact]
+    - **Upcoming Milestones**: [Key roadmap items with expected timelines]
+    
+    ## Technical Analysis & On-Chain Data
+    - **Network Health**: [Transaction speed, fees, scalability metrics]
+    - **Security Status**: [Recent audits, security incidents, or improvements]
+    - **Adoption Trends**: [User growth, transaction volume trends, geographic distribution]
+    
+    ## Investment Thesis & Bottom Line
+    **[Clear recommendation with specific reasoning]**
+    
+    **Key Takeaway**: [1-2 sentences summarizing the most important insight for decision-making]
+    
+    **Risk-Reward Profile**: [High/Medium/Low risk with specific reasoning]
+  agent: coin_overview_agent
+  context:
+    - coin_overview_task
+    - tokenomics_analysis_task
+    - sentiment_analysis_task
+    - onchain_data_analysis_task
+    - ecosystem_mapping_task
+    - risk_controversy_analysis_task
+    - recent_developments_task
+    - market_data_analysis_task

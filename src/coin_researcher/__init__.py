@@ -1,0 +1,1 @@
+# Coin Researcher package

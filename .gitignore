@@ -4,3 +4,4 @@ __pycache__/
 .gradio
 output
 .venv
+db

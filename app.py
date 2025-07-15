@@ -1,5 +1,5 @@
 import os
-from src.topic_researcher.main import create_interface
+from src.main import create_interface
 from dotenv import load_dotenv
 
 load_dotenv()
