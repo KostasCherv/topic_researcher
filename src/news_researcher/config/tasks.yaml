@@ -1,0 +1,166 @@
+news_aggregation_task:
+  description: >
+    Collect and categorize recent news articles about {topic} from the past {time_span} days.
+    Focus on major news outlets, industry publications, and social media sources.
+    Organize news by categories such as breaking news, developments, announcements, and analysis.
+    IMPORTANT: Only include news from the past {time_span} days. Do not include old news from previous months or years.
+    Use search terms like "latest", "recent", "today", "this week", "{time_span} days", "2024" to ensure you get current news.
+  expected_output: >
+    A comprehensive collection of recent news articles from the past {time_span} days including:
+    - Breaking news and major developments
+    - Industry announcements and updates
+    - Analysis and opinion pieces
+    - Social media discussions and trends
+    - Source categorization and credibility assessment
+    - All news must be from the past {time_span} days only
+  agent: news_aggregator
+
+sentiment_analysis_task:
+  description: >
+    Analyze the sentiment of news coverage about {topic} from the past {time_span} days.
+    Identify positive, negative, and neutral sentiment trends.
+    Look for emotional triggers and tone shifts in coverage.
+    IMPORTANT: Only analyze news from the past {time_span} days. Do not include old news from previous months or years.
+  expected_output: >
+    A detailed sentiment analysis of recent news from the past {time_span} days including:
+    - Overall sentiment breakdown (positive/negative/neutral percentages)
+    - Key positive and negative themes
+    - Sentiment trends over time
+    - Emotional triggers and tone analysis
+    - Source-specific sentiment patterns
+    - All analysis must be based on news from the past {time_span} days only
+  agent: sentiment_analyzer
+
+trend_analysis_task:
+  description: >
+    Identify emerging trends and patterns in news coverage about {topic} from the past {time_span} days.
+    Look for recurring themes, new developments, and shifting narratives.
+    Distinguish between temporary noise and meaningful trends.
+    IMPORTANT: Only analyze trends from the past {time_span} days. Do not include old trends from previous months or years.
+  expected_output: >
+    A comprehensive trend analysis of recent news from the past {time_span} days including:
+    - Emerging themes and patterns
+    - Trending topics and keywords
+    - Narrative shifts and evolution
+    - Momentum indicators for different topics
+    - Trend significance and potential impact
+    - All trends must be from the past {time_span} days only
+  agent: trend_spotter
+
+fact_checking_task:
+  description: >
+    Verify the accuracy of news claims about {topic} from the past {time_span} days.
+    Cross-reference information from multiple sources.
+    Identify potential misinformation, inaccuracies, or unverified claims.
+    IMPORTANT: Only fact-check news from the past {time_span} days. Do not include old news from previous months or years.
+  expected_output: >
+    A fact-checking report of recent news from the past {time_span} days including:
+    - Verified facts and claims
+    - Disputed or unverified information
+    - Potential misinformation identified
+    - Source credibility assessment
+    - Recommendations for further verification
+    - All fact-checking must be based on news from the past {time_span} days only
+  agent: fact_checker
+
+impact_assessment_task:
+  description: >
+    Analyze how news about {topic} from the past {time_span} days affects markets, industries, and stakeholders.
+    Assess potential impact on stock prices, market sentiment, regulatory decisions, and public opinion.
+    IMPORTANT: Only analyze impact of news from the past {time_span} days. Do not include old news from previous months or years.
+  expected_output: >
+    An impact assessment of recent news from the past {time_span} days including:
+    - Market and industry effects
+    - Stakeholder impact analysis
+    - Regulatory and policy implications
+    - Public opinion influence
+    - Long-term impact projections
+    - All impact analysis must be based on news from the past {time_span} days only
+  agent: impact_assessor
+
+crisis_monitoring_task:
+  description: >
+    Monitor and identify potential crisis situations or negative developments related to {topic} from the past {time_span} days.
+    Look for controversies, scandals, regulatory issues, and other potential threats.
+    IMPORTANT: Only monitor crises from the past {time_span} days. Do not include old crises from previous months or years.
+  expected_output: >
+    A crisis monitoring report of recent developments from the past {time_span} days including:
+    - Identified potential crises or controversies
+    - Risk assessment and severity levels
+    - Stakeholder concerns and reactions
+    - Mitigation strategies or responses
+    - Crisis development timeline
+    - All crisis monitoring must be based on developments from the past {time_span} days only
+  agent: crisis_monitor
+
+news_summary_task:
+  description: >
+    Create a comprehensive news digest about {topic} by synthesizing all news analysis findings.
+    Focus on providing actionable insights with sentiment analysis, trend identification, and impact assessment.
+    
+    CRITICAL REQUIREMENTS:
+    - Include specific dates and timeframes for all news events
+    - Provide sentiment analysis with concrete examples
+    - Highlight emerging trends with supporting evidence
+    - Include impact assessment with specific stakeholders affected
+    - Address any crisis situations or controversies identified
+    - Provide actionable insights for different audiences
+    - Ensure all claims are supported by the news analysis from other agents
+    - ALL NEWS MUST BE FROM THE PAST {time_span} DAYS ONLY
+  expected_output: >
+    A comprehensive news digest with the following structure:
+    
+    # {topic} News Digest - Past {time_span} Days
+    
+    ## Executive Summary
+    [2-3 sentences summarizing the most important news developments and overall sentiment]
+    
+    ## Key News Developments
+    - **[Specific News Event]**: [Detailed explanation with date and impact]
+    - **[Specific News Event]**: [Detailed explanation with date and impact]
+    - **[Specific News Event]**: [Detailed explanation with date and impact]
+    - **[Specific News Event]**: [Detailed explanation with date and impact]
+    
+    ## Sentiment Analysis
+    [🟢 Positive / 🟡 Neutral / 🔴 Negative] - [Specific reasons with data points]
+    - **Positive Themes**: [List 2-3 specific positive themes with examples]
+    - **Negative Themes**: [List 2-3 specific negative themes with examples]
+    - **Sentiment Trends**: [How sentiment has evolved over the time period]
+    
+    ## Emerging Trends
+    1. **[Specific Trend]**: [Detailed explanation with supporting evidence]
+    2. **[Specific Trend]**: [Detailed explanation with supporting evidence]
+    3. **[Specific Trend]**: [Detailed explanation with supporting evidence]
+    
+    ## Market & Industry Impact
+    - **Market Effects**: [Specific impact on markets, stocks, or investments]
+    - **Industry Implications**: [How the news affects the broader industry]
+    - **Regulatory Impact**: [Any regulatory or policy implications]
+    - **Stakeholder Reactions**: [How different stakeholders are responding]
+    
+    ## Crisis & Controversy Watch
+    - **[Specific Issue]**: [Detailed explanation with severity assessment]
+    - **[Specific Issue]**: [Detailed explanation with severity assessment]
+    - **Risk Mitigation**: [Any responses or mitigation strategies observed]
+    
+    ## Fact-Checking Highlights
+    - **Verified Claims**: [Key facts that have been verified]
+    - **Disputed Information**: [Claims that need further verification]
+    - **Misinformation Alert**: [Any false or misleading information identified]
+    
+    ## Key Takeaways & Recommendations
+    **[Clear summary of most important insights]**
+    
+    **For Investors**: [Specific insights for investment decisions]
+    **For Industry Professionals**: [Specific insights for business decisions]
+    **For General Public**: [Specific insights for understanding the topic]
+    
+    **Next Week Watch**: [What to monitor in the coming week]
+  agent: summary_generator
+  context:
+    - news_aggregation_task
+    - sentiment_analysis_task
+    - trend_analysis_task
+    - fact_checking_task
+    - impact_assessment_task
+    - crisis_monitoring_task

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
 AI Research Assistant - Main Application
-Provides a Gradio interface for both general topic research and cryptocurrency analysis.
+Provides a Gradio interface for general topic research, cryptocurrency analysis, and news research.
 """
 
 import warnings
@@ -11,6 +11,7 @@ import os
 
 from src.topic_researcher.crew import TopicResearcher
 from src.coin_researcher.crew import CoinResearcher
+from src.news_researcher.crew import NewsResearcher
 
 # Suppress warnings
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
@@ -76,6 +77,40 @@ def research_coin(coin: str) -> str:
         return "Research completed but output file not found. Please try again."
     except Exception as e:
         return f"An error occurred while researching the coin: {str(e)}"
+
+
+def research_news(topic: str, time_span: str = "7 days") -> str:
+    """
+    Run the news research crew with the given topic and time span.
+    
+    Args:
+        topic: The topic to research (e.g., "Crypto", "Ethereum", "DeFi")
+        time_span: Time span for news (default: "7 days")
+    
+    Returns:
+        Comprehensive news digest
+    """
+    if not topic.strip():
+        return "Please enter a valid topic."
+
+    inputs = {
+        "topic": topic.strip(), 
+        "time_span": time_span,
+        "current_year": str(datetime.now().year)
+    }
+
+    try:
+        NewsResearcher().crew().kickoff(inputs=inputs)
+
+        # Read the generated file
+        with open("output/news_summary.md", "r", encoding="utf-8") as f:
+            summary = f.read()
+
+        return summary
+    except FileNotFoundError:
+        return "Research completed but output file not found. Please try again."
+    except Exception as e:
+        return f"An error occurred while researching the news: {str(e)}"
 
 
 def create_topic_research_tab():
@@ -145,6 +180,44 @@ def create_coin_research_tab():
         )
 
 
+def create_news_research_tab():
+    """Create the News Research tab."""
+    with gr.TabItem("News Research"):
+        with gr.Row():
+            with gr.Column(scale=1):
+                news_topic_input = gr.Textbox(
+                    label="Enter a topic to research news about",
+                    placeholder="e.g., Crypto, Ethereum, DeFi, AI",
+                    lines=2,
+                )
+                time_span_input = gr.Dropdown(
+                    choices=["1 day", "3 days", "7 days", "14 days", "30 days"],
+                    value="7 days",
+                    label="Time span for news",
+                )
+                news_submit_btn = gr.Button("Research News", variant="primary")
+                gr.Examples(
+                    examples=[
+                        ["Crypto"],
+                        ["Ethereum"],
+                        ["DeFi"],
+                        ["AI"],
+                        ["Bitcoin"],
+                    ],
+                    inputs=news_topic_input,
+                )
+
+        with gr.Tabs() as news_tabs:
+            with gr.TabItem("News Digest"):
+                news_summary = gr.Markdown(label="News Digest")
+
+        news_submit_btn.click(
+            fn=research_news,
+            inputs=[news_topic_input, time_span_input],
+            outputs=news_summary,
+        )
+
+
 def create_interface():
     """Create and return the Gradio interface."""
     with gr.Blocks(theme=gr.themes.Soft()) as interface:
@@ -154,6 +227,7 @@ def create_interface():
         with gr.Tabs() as tabs:
             create_topic_research_tab()
             create_coin_research_tab()
+            create_news_research_tab()
 
     return interface
 
