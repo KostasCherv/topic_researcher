@@ -28,6 +28,13 @@ class CoinResearcher:
         )
 
     @agent
+    def synthesis_agent(self) -> Agent:
+        return Agent(
+            config=self.agents_config["synthesis_agent"],
+            verbose=True,
+        )
+
+    @agent
     def tokenomics_analyst(self) -> Agent:
         return Agent(
             config=self.agents_config["tokenomics_analyst"],

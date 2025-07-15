@@ -199,7 +199,7 @@ coin_summary_task:
     **Key Takeaway**: [1-2 sentences summarizing the most important insight for decision-making]
     
     **Risk-Reward Profile**: [High/Medium/Low risk with specific reasoning]
-  agent: coin_overview_agent
+  agent: synthesis_agent
   context:
     - coin_overview_task
     - tokenomics_analysis_task
