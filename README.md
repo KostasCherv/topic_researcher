@@ -20,9 +20,8 @@ pip install uv
 
 Next, navigate to your project directory and install the dependencies:
 
-(Optional) Lock the dependencies and install them by using the CLI command:
 ```bash
-crewai install
+uv sync
 ```
 
 ### Customizing
@@ -37,10 +36,10 @@ crewai install
 ## Running the Project
 
 ### Web Interface
-The project now includes a Gradio web interface for interactive topic research. To launch it:
+The project includes a Gradio web interface for interactive topic research. To launch it:
 
 ```bash
-$ crewai run
+uv run app.py
 ```
 
 This will start a local web server where you can:
@@ -52,14 +51,17 @@ This will start a local web server where you can:
 You can also use the project through the command line with various options:
 
 ```bash
+# Run the main interface
+uv run src/topic_researcher/main.py
+
 # Train the crew for a specific number of iterations
-$ crewai train <iterations> <filename>
+uv run src/topic_researcher/main.py train <iterations> <filename>
 
 # Replay the crew execution from a specific task
-$ crewai replay <task_id>
+uv run src/topic_researcher/main.py replay <task_id>
 
 # Test the crew execution
-$ crewai test <iterations> <eval_llm>
+uv run src/topic_researcher/main.py test <iterations> <eval_llm>
 ```
 
 ## Output
